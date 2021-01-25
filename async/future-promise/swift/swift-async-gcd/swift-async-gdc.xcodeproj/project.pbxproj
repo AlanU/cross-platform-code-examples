@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E7E8E52525BF7E3D00BF2792 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E8E52425BF7E3D00BF2792 /* main.swift */; };
+		E71EF15F25BF844F00D2DB8E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71EF15E25BF844F00D2DB8E /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,7 +23,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		E7E8E52425BF7E3D00BF2792 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = main.swift; path = "swift-async-gcd/main.swift"; sourceTree = "<group>"; };
+		E71EF15E25BF844F00D2DB8E /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		E7F2DC1325BF4FC40005DE8E /* swift-async-gcd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "swift-async-gcd"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -41,7 +41,7 @@
 		E7F2DC0A25BF4FC40005DE8E = {
 			isa = PBXGroup;
 			children = (
-				E7E8E52425BF7E3D00BF2792 /* main.swift */,
+				E71EF15E25BF844F00D2DB8E /* main.swift */,
 				E7F2DC1425BF4FC40005DE8E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -112,7 +112,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7E8E52525BF7E3D00BF2792 /* main.swift in Sources */,
+				E71EF15F25BF844F00D2DB8E /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

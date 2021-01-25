@@ -20,20 +20,20 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include <thread>
 #include <future>
 
-std::future<void> simulatedAsyncWork (const std::chrono::seconds & workTime) {
-  return std::async(std::launch::async, [workTime = std::as_const(workTime)](){
-			        	std::this_thread::sleep_for(workTime);
-		     });
-	
+std::future<void> simulatedAsyncWork (unsigned int workTimeInMsec) {
+  return std::async(std::launch::async,
+                    [workTimeInMsec]() {
+                        std::this_thread::sleep_for(std::chrono::milliseconds (workTimeInMsec));
+		            });
 }
 
 void asyncFunction (const std::string & message) {
-      simulatedWork(std::chrono::seconds(1)).wait()
-      std::cout<<"Message From asyncFunction:"<<message<<std::endl;
+    simulatedAsyncWork(1000).wait();
+    std::cout<<"Message From asyncFunction: "<<message<<std::endl;
 }
 
 
 int main() {
-    asyncFunction("Hello World")
+    asyncFunction("Hello World");
     return 0;
 }

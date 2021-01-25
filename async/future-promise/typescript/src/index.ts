@@ -15,8 +15,11 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-const simulatedAsyncWork = async (workTimeInMsec: number) => {
-    new Promise( resolve => setTimeout(resolve, workTimeInMsec) );
+const simulatedAsyncWork =  (workTimeInMsec: number):Promise<void> => {
+   return new Promise<void>( resolve => {
+        console.log(`Doing Async Work For ${workTimeInMsec} ms`)
+        setTimeout(()=>{console.log( `Async Work Done`);resolve();}, workTimeInMsec)
+    });
 }
 
 const asyncFunction = async (message: string) => {

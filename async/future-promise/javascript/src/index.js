@@ -14,10 +14,12 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMA
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-const simulatedAsyncWork = async (workTimeInMsec) => {
-    new Promise(resolve => setTimeout(resolve, workTimeInMsec));
+const simulatedAsyncWork = (workTimeInMsec) => {
+    return new Promise(resolve => {
+        console.log(`Doing Async Work For ${workTimeInMsec} ms`);
+        setTimeout(() => { console.log(`Async Work Done`); resolve(); }, workTimeInMsec);
+    });
 };
-
 const asyncFunction = async (message) => {
     await simulatedAsyncWork(1000);
     console.log(`Message From asyncFunction: ${message}`);

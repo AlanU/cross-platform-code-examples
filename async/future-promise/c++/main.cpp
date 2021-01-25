@@ -23,7 +23,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 std::future<void> simulatedAsyncWork (unsigned int workTimeInMsec) {
   return std::async(std::launch::async,
                     [workTimeInMsec]() {
+                        std::cout<<"Doing Async Work For "<<workTimeInMsec<<"ms"<<'\n';
                         std::this_thread::sleep_for(std::chrono::milliseconds (workTimeInMsec));
+                        std::cout<<"Async Work Done"<<'\n';
 		            });
 }
 

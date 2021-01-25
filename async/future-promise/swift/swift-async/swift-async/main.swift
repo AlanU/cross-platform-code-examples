@@ -17,28 +17,23 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import Foundation
 
-class AsyncClass : NSObject
-{
-    func simulatedAsyncWork( workTimeInMsec:  UInt, withDispatchSemaphore sNotify: DispatchSemaphore) {
-        let que = DispatchQueue.global(qos: .userInitiated)
-        que.async {
-            print("Doing Async Work For %lu ms",workTimeInMsec)
-            Thread.sleep(forTimeInterval:TimeInterval(workTimeInMsec/1000))
-            print("Async Work Done")
-            sNotify.signal()
-        }
+func simulatedAsyncWork( workTimeInMsec:  UInt, withDispatchSemaphore sNotify: DispatchSemaphore) {
+    let que = DispatchQueue.global(qos: .userInitiated)
+    que.async {
+        print("Doing Async Work For \(workTimeInMsec) ms")
+        Thread.sleep(forTimeInterval:TimeInterval(workTimeInMsec/1000))
+        print("Async Work Done")
+        sNotify.signal()
     }
-        
-    func  asyncFunction( message: String) {
-        let sema  = DispatchSemaphore(value: 0)
-        simulatedAsyncWork(workTimeInMsec: 1000, withDispatchSemaphore: sema)
-        sema.wait()
-        print("Message From asyncFunction: %@ ",message)
-           
-    }
+}
     
+func  asyncFunction( message: String) {
+    let sema  = DispatchSemaphore(value: 0)
+    simulatedAsyncWork(workTimeInMsec: 1000, withDispatchSemaphore: sema)
+    sema.wait()
+    print("Message From asyncFunction: \(message) ")
+       
 }
 
-let obj =  AsyncClass.init()
-obj.asyncFunction(message: "Hello World")
+asyncFunction(message: "Hello World")
 

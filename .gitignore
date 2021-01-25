@@ -5,3 +5,5 @@ async/future-promise/typescript/dist/
 async/future-promise/javascript/.idea/
 async/future-promise/typescript/.idea/
 package-lock.json
+async/future-promise/c++/.idea/
+async/future-promise/c++/cmake-build-debug/

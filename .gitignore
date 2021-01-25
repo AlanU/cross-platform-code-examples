@@ -9,3 +9,6 @@ async/future-promise/c++/.idea/
 async/future-promise/c++/cmake-build-debug/
 xcuserdata
 async/future-promise/objective-c/objective-c-future-promises/objective-c-future-promises.xcodeproj/xcuserdata/
+/async/future-promise/ruby/.idea/inspectionProfiles/profiles_settings.xml
+async/future-promise/ruby/.idea/
+GemFile.lock

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E7F2DC1725BF4FC40005DE8E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F2DC1625BF4FC40005DE8E /* main.swift */; };
+		E7E8E51F25BF7CC200BF2792 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E8E51E25BF7CC200BF2792 /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,8 +23,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		E7F2DC1325BF4FC40005DE8E /* swift-async */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "swift-async"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E7F2DC1625BF4FC40005DE8E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		E7E8E51E25BF7CC200BF2792 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = main.swift; path = "swift-async-operations/main.swift"; sourceTree = "<group>"; };
+		E7F2DC1325BF4FC40005DE8E /* swift-async-operations */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "swift-async-operations"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,7 +41,7 @@
 		E7F2DC0A25BF4FC40005DE8E = {
 			isa = PBXGroup;
 			children = (
-				E7F2DC1525BF4FC40005DE8E /* swift-async */,
+				E7E8E51E25BF7CC200BF2792 /* main.swift */,
 				E7F2DC1425BF4FC40005DE8E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,25 +49,17 @@
 		E7F2DC1425BF4FC40005DE8E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E7F2DC1325BF4FC40005DE8E /* swift-async */,
+				E7F2DC1325BF4FC40005DE8E /* swift-async-operations */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		E7F2DC1525BF4FC40005DE8E /* swift-async */ = {
-			isa = PBXGroup;
-			children = (
-				E7F2DC1625BF4FC40005DE8E /* main.swift */,
-			);
-			path = "swift-async";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E7F2DC1225BF4FC40005DE8E /* swift-async */ = {
+		E7F2DC1225BF4FC40005DE8E /* swift-async-operations */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E7F2DC1A25BF4FC40005DE8E /* Build configuration list for PBXNativeTarget "swift-async" */;
+			buildConfigurationList = E7F2DC1A25BF4FC40005DE8E /* Build configuration list for PBXNativeTarget "swift-async-operations" */;
 			buildPhases = (
 				E7F2DC0F25BF4FC40005DE8E /* Sources */,
 				E7F2DC1025BF4FC40005DE8E /* Frameworks */,
@@ -77,9 +69,9 @@
 			);
 			dependencies = (
 			);
-			name = "swift-async";
+			name = "swift-async-operations";
 			productName = "swift-async";
-			productReference = E7F2DC1325BF4FC40005DE8E /* swift-async */;
+			productReference = E7F2DC1325BF4FC40005DE8E /* swift-async-operations */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -93,10 +85,11 @@
 				TargetAttributes = {
 					E7F2DC1225BF4FC40005DE8E = {
 						CreatedOnToolsVersion = 12.3;
+						LastSwiftMigration = 1230;
 					};
 				};
 			};
-			buildConfigurationList = E7F2DC0E25BF4FC40005DE8E /* Build configuration list for PBXProject "swift-async" */;
+			buildConfigurationList = E7F2DC0E25BF4FC40005DE8E /* Build configuration list for PBXProject "swift-async-operations" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -109,7 +102,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E7F2DC1225BF4FC40005DE8E /* swift-async */,
+				E7F2DC1225BF4FC40005DE8E /* swift-async-operations */,
 			);
 		};
 /* End PBXProject section */
@@ -119,7 +112,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7F2DC1725BF4FC40005DE8E /* main.swift in Sources */,
+				E7E8E51F25BF7CC200BF2792 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,10 +237,17 @@
 		E7F2DC1B25BF4FC40005DE8E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = USBJ9L4GGJ;
 				ENABLE_HARDENED_RUNTIME = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -255,9 +255,15 @@
 		E7F2DC1C25BF4FC40005DE8E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = USBJ9L4GGJ;
 				ENABLE_HARDENED_RUNTIME = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -266,7 +272,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E7F2DC0E25BF4FC40005DE8E /* Build configuration list for PBXProject "swift-async" */ = {
+		E7F2DC0E25BF4FC40005DE8E /* Build configuration list for PBXProject "swift-async-operations" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E7F2DC1825BF4FC40005DE8E /* Debug */,
@@ -275,7 +281,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E7F2DC1A25BF4FC40005DE8E /* Build configuration list for PBXNativeTarget "swift-async" */ = {
+		E7F2DC1A25BF4FC40005DE8E /* Build configuration list for PBXNativeTarget "swift-async-operations" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E7F2DC1B25BF4FC40005DE8E /* Debug */,

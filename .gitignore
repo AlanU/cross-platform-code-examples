@@ -1,5 +1,7 @@
 
 /async/future-promise/typescript/node_modules/
-/async/future-promise/typescript/.idea/
 /async/future-promise/typescript/package-lock.json
 async/future-promise/typescript/dist/
+async/future-promise/javascript/.idea/
+async/future-promise/typescript/.idea/
+package-lock.json

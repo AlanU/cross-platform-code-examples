@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E756A3F725BE81CD00B8C59B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E756A3F625BE81CD00B8C59B /* main.m */; };
+		E72BEDA025BF86FA0097AAD0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E72BED9F25BF86FA0097AAD0 /* main.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,8 +23,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		E756A3F325BE81CD00B8C59B /* objective-c-future-promises */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "objective-c-future-promises"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E756A3F625BE81CD00B8C59B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E72BED9F25BF86FA0097AAD0 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E756A3F325BE81CD00B8C59B /* objective-c-async-operations */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "objective-c-async-operations"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,7 +41,7 @@
 		E756A3EA25BE81CD00B8C59B = {
 			isa = PBXGroup;
 			children = (
-				E756A3F525BE81CD00B8C59B /* objective-c-future-promises */,
+				E72BED9F25BF86FA0097AAD0 /* main.m */,
 				E756A3F425BE81CD00B8C59B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,25 +49,17 @@
 		E756A3F425BE81CD00B8C59B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E756A3F325BE81CD00B8C59B /* objective-c-future-promises */,
+				E756A3F325BE81CD00B8C59B /* objective-c-async-operations */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		E756A3F525BE81CD00B8C59B /* objective-c-future-promises */ = {
-			isa = PBXGroup;
-			children = (
-				E756A3F625BE81CD00B8C59B /* main.m */,
-			);
-			path = "objective-c-future-promises";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E756A3F225BE81CD00B8C59B /* objective-c-future-promises */ = {
+		E756A3F225BE81CD00B8C59B /* objective-c-async-operations */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E756A3FA25BE81CD00B8C59B /* Build configuration list for PBXNativeTarget "objective-c-future-promises" */;
+			buildConfigurationList = E756A3FA25BE81CD00B8C59B /* Build configuration list for PBXNativeTarget "objective-c-async-operations" */;
 			buildPhases = (
 				E756A3EF25BE81CD00B8C59B /* Sources */,
 				E756A3F025BE81CD00B8C59B /* Frameworks */,
@@ -77,9 +69,9 @@
 			);
 			dependencies = (
 			);
-			name = "objective-c-future-promises";
+			name = "objective-c-async-operations";
 			productName = "objective-c-future-promises";
-			productReference = E756A3F325BE81CD00B8C59B /* objective-c-future-promises */;
+			productReference = E756A3F325BE81CD00B8C59B /* objective-c-async-operations */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -95,7 +87,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E756A3EE25BE81CD00B8C59B /* Build configuration list for PBXProject "objective-c-future-promises" */;
+			buildConfigurationList = E756A3EE25BE81CD00B8C59B /* Build configuration list for PBXProject "objective-c-async-operations" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -108,7 +100,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E756A3F225BE81CD00B8C59B /* objective-c-future-promises */,
+				E756A3F225BE81CD00B8C59B /* objective-c-async-operations */,
 			);
 		};
 /* End PBXProject section */
@@ -118,7 +110,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E756A3F725BE81CD00B8C59B /* main.m in Sources */,
+				E72BEDA025BF86FA0097AAD0 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,7 +251,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E756A3EE25BE81CD00B8C59B /* Build configuration list for PBXProject "objective-c-future-promises" */ = {
+		E756A3EE25BE81CD00B8C59B /* Build configuration list for PBXProject "objective-c-async-operations" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E756A3F825BE81CD00B8C59B /* Debug */,
@@ -268,7 +260,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E756A3FA25BE81CD00B8C59B /* Build configuration list for PBXNativeTarget "objective-c-future-promises" */ = {
+		E756A3FA25BE81CD00B8C59B /* Build configuration list for PBXNativeTarget "objective-c-async-operations" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E756A3FB25BE81CD00B8C59B /* Debug */,

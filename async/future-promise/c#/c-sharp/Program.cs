@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 class Program
 {
-    static Task<uint> simulatedAsyncWork(int workTimeInMsec,uint dataToProcess,TaskCompletionSource<uint> promise)
+    static Task<uint> simulatedAsyncWork(int workTimeInMsec,uint dataToProcess)
     {            
         Task<uint> future = Task<uint>.Factory.StartNew(() => {
             Console.WriteLine("Doing Async Work For " + workTimeInMsec + "ms on data " + dataToProcess);
@@ -30,8 +30,7 @@ class Program
 
     static void processData(uint data)
     {
-        var promise = new TaskCompletionSource<uint>();
-        Task<uint> future =  simulatedAsyncWork(1000, data, promise);
+        Task<uint> future =  simulatedAsyncWork(1000, data);
         uint processedData = future.Result;
         Console.WriteLine("Data Value After Work " + processedData);
     }

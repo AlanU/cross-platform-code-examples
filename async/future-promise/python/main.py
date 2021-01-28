@@ -19,18 +19,16 @@ import concurrent.futures
 import time
 
 def simulatedAsyncWork(workTimeInMsec, dataToProcess):
-  print(f"Doing Async Work For {workTimeInMsec} ms on data {dataToProcess}")
-  time.sleep(workTimeInMsec/1000)
-  print('Async Work Done')
-  return dataToProcess+1
-
+    print(f"Doing Async Work For {workTimeInMsec} ms on data {dataToProcess}")
+    time.sleep(workTimeInMsec/1000)
+    print('Async Work Done')
+    return dataToProcess+1
 
 def processData(data):
-        executor = concurrent.futures.ProcessPoolExecutor()
-        future = executor.submit(simulatedAsyncWork,1000, data)
-        processedData = future.result()
-        print(f"Data Value After Work {processedData}")
-
+    executor = concurrent.futures.ProcessPoolExecutor()
+    future = executor.submit(simulatedAsyncWork,1000, data)
+    processedData = future.result()
+    print(f"Data Value After Work {processedData}")
 
 if __name__ == '__main__':
     processData(3)

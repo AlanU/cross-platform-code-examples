@@ -12,3 +12,7 @@ async/future-promise/objective-c/objective-c-future-promises/objective-c-future-
 /async/future-promise/ruby/.idea/inspectionProfiles/profiles_settings.xml
 async/future-promise/ruby/.idea/
 GemFile.lock
+async/future-promise/python/.idea/
+async/future-promise/python/venv/bin/
+async/future-promise/python/venv/lib/
+/async/future-promise/python/venv/pyvenv.cfg

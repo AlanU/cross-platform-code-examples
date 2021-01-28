@@ -17,34 +17,36 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #import <Foundation/Foundation.h>
 
 @interface AsyncClass : NSObject
--(void) simulatedAsyncWork: (NSUInteger) workTimeInMsec;
--(void) asyncFunction: (const NSString *)  message ;
+-(NSUInteger) simulatedAsyncWork: (NSUInteger) workTimeInMsec withData:(NSUInteger) dataToProcess;
+-(void) processData: (NSUInteger)  data ;
 
 @end
 @implementation AsyncClass
 
--(void) simulatedAsyncWork: (NSUInteger) workTimeInMsec  {
-    NSLog(@"Doing Async Work For %lu ms",(unsigned long)workTimeInMsec);
+-(NSUInteger) simulatedAsyncWork: (NSUInteger) workTimeInMsec withData:(NSUInteger) dataToProcess  {
+    NSLog(@"Doing Async Work For %lu ms on data %lu ",(unsigned long)workTimeInMsec, (unsigned long)dataToProcess);
     [NSThread sleepForTimeInterval:workTimeInMsec/1000];
     NSLog(@"Async Work Done");
+    return dataToProcess+1;
 }
 
--(void) asyncFunction: (const NSString *)  message {
+-(void) processData: (NSUInteger)  data {
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    __block NSUInteger processedData = 0;
     [queue addOperationWithBlock:^{
-        [self simulatedAsyncWork:1000];
+        processedData =  [self simulatedAsyncWork:1000 withData:data];
     }];
     [queue waitUntilAllOperationsAreFinished];
-    NSLog(@"Message From asyncFunction: %@ ",message);
+    NSLog(@"Data Value After Work: %lu ",(unsigned long)processedData);
     
 }
+
 @end
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         AsyncClass * obj = [[AsyncClass alloc] init];
-        [obj asyncFunction:@"Hello World"];
-        
+        [obj processData:3];
     }
     return 0;
 }

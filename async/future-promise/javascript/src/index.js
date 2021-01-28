@@ -14,17 +14,16 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMA
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-const simulatedAsyncWork = (workTimeInMsec) => {
+const simulatedAsyncWork = (workTimeInMsec, dataToProcess) => {
     return new Promise(resolve => {
-        console.log(`Doing Async Work For ${workTimeInMsec} ms`);
-        setTimeout(() => { console.log(`Async Work Done`); resolve(); }, workTimeInMsec);
+        console.log(`Doing Async Work For ${workTimeInMsec} ms on data ${dataToProcess}`);
+        setTimeout(() => { console.log(`Async Work Done`); resolve(dataToProcess + 1); }, workTimeInMsec);
     });
 };
-const asyncFunction = async (message) => {
-    await simulatedAsyncWork(1000);
-    console.log(`Message From asyncFunction: ${message}`);
+const processData = async (data) => {
+    let processedData = await simulatedAsyncWork(1000, data);
+    console.log(`Data Value After Work ${processedData}`);
 };
-
 (async () => {
-    await asyncFunction("Hello World");
+    await processData(3);
 })();

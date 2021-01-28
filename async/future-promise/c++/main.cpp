@@ -19,22 +19,24 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include <chrono>
 #include <thread>
 #include <future>
-
-std::future<void> simulatedAsyncWork (unsigned int workTimeInMsec) {
-    return std::async(std::launch::async,[workTimeInMsec]() {
-        std::cout<<"Doing Async Work For "<<workTimeInMsec<<"ms"<<'\n';
+using namespace std::chrono_literals;
+std::future<unsigned int> simulatedAsyncWork (std::chrono::milliseconds workTimeInMsec, unsigned int dataToProcess) {
+    return std::async(std::launch::async,[workTimeInMsec, dataToProcess]()
+    {
+        std::cout<<"Doing Async Work For "<<workTimeInMsec.count()<<"ms on data "<<dataToProcess<<'\n';
         std::this_thread::sleep_for(std::chrono::milliseconds (workTimeInMsec));
         std::cout<<"Async Work Done"<<'\n';
+        return dataToProcess+1;;
     });
 }
 
-void asyncFunction (const std::string & message) {
-    simulatedAsyncWork(1000).wait();
-    std::cout<<"Message From asyncFunction: "<<message<<std::endl;
+void processData (unsigned int data) {
+    std::future<unsigned int> processedData = simulatedAsyncWork(1000ms,data);
+    processedData.wait();
+    std::cout<<"Data Value After Work "<< processedData.get()<<std::endl;
 }
 
-
 int main() {
-    asyncFunction("Hello World");
+    processData(3);
     return 0;
 }

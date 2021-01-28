@@ -15,18 +15,18 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-const simulatedAsyncWork =  (workTimeInMsec: number):Promise<void> => {
-   return new Promise<void>( resolve => {
-        console.log(`Doing Async Work For ${workTimeInMsec} ms`)
-        setTimeout(()=>{console.log( `Async Work Done`);resolve();}, workTimeInMsec)
+const simulatedAsyncWork =  (workTimeInMsec: number,dataToProcess: number):Promise<number> => {
+   return new Promise<number>( resolve => {
+        console.log(`Doing Async Work For ${workTimeInMsec} ms on data ${dataToProcess}`)
+        setTimeout(()=>{console.log( `Async Work Done`);resolve(dataToProcess+1);}, workTimeInMsec)
     });
 }
 
-const asyncFunction = async (message: string) => {
-    await simulatedAsyncWork(1000)
-    console.log(`Message From asyncFunction: ${message}`)
+const processData = async (data: number) => {
+    let processedData = await simulatedAsyncWork(1000,data)
+    console.log(`Data Value After Work ${processedData}`);
 }
 
 (async () =>{
-    await asyncFunction("Hello World");
+    await processData(3);
 })();

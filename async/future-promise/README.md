@@ -15,7 +15,7 @@
 
 ![swift code](https://github.com/AlanU/cross-platform-code-examples/blob/main/async/future-promise/code%20pictures/python.png)
 
-[Ruby](https://github.com/AlanU/cross-platform-code-examples/blob/main/async/future-promise/ruby/index.rb)
+![Ruby](https://github.com/AlanU/cross-platform-code-examples/blob/main/async/future-promise/ruby/index.rb)
 
 ![swift code](https://github.com/AlanU/cross-platform-code-examples/blob/main/async/future-promise/code%20pictures/ruby.png)
 

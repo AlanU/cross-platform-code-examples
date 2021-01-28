@@ -17,26 +17,30 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #import <Foundation/Foundation.h>
 
 @interface AsyncClass : NSObject
--(void) simulatedAsyncWork: (NSUInteger) workTimeInMsec withDispatchSemaphore:(dispatch_semaphore_t) sNotify;
--(void) asyncFunction: (const NSString *)  message ;
+-(void) simulatedAsyncWork: (NSUInteger) workTimeInMsec withData:(NSUInteger) dataToProcess dispatchSemaphore:(dispatch_semaphore_t) sNotify onComplete:(void(^)(NSUInteger)) completionHandler;
+-(void) processData: (NSUInteger)  data ;
 
 @end
 @implementation AsyncClass
 
--(void) simulatedAsyncWork: (NSUInteger) workTimeInMsec withDispatchSemaphore:(dispatch_semaphore_t) sNotify {
+-(void) simulatedAsyncWork: (NSUInteger) workTimeInMsec withData:(NSUInteger)dataToProcess dispatchSemaphore:(dispatch_semaphore_t) sNotify onComplete:(void(^)(NSUInteger)) completionHandler {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSLog(@"Doing Async Work For %lu ms",(unsigned long)workTimeInMsec);
+        NSLog(@"Doing Async Work For %lu ms on data %lu",workTimeInMsec,dataToProcess);
         [NSThread sleepForTimeInterval:workTimeInMsec/1000];
         NSLog(@"Async Work Done");
+        completionHandler(dataToProcess+1);
         dispatch_semaphore_signal(sNotify);
     });
 }
 
--(void) asyncFunction: (const NSString *)  message {
+-(void) processData: (NSUInteger)  data {
     dispatch_semaphore_t sema = dispatch_semaphore_create(0);
-    [self simulatedAsyncWork:1000 withDispatchSemaphore:sema];
+    __block NSUInteger processedData = 0;
+    [self simulatedAsyncWork:1000 withData:data dispatchSemaphore:sema onComplete:(^(NSUInteger value){
+        processedData = value;
+    }) ];
     dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
-    NSLog(@"Message From asyncFunction: %@ ",message);
+    NSLog(@"Data Value After Work %lu ",processedData);
     
 }
 @end
@@ -44,7 +48,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         AsyncClass * obj = [[AsyncClass alloc] init];
-        [obj asyncFunction:@"Hello World"];
+        [obj processData:3];
         
     }
     return 0;

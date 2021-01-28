@@ -17,23 +17,27 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import Foundation
 
-func simulatedAsyncWork( workTimeInMsec:  UInt, withDispatchSemaphore sNotify: DispatchSemaphore) {
+func simulatedAsyncWork( workTimeInMsec:  UInt, withData dataToProcess: UInt, dispatchSemaphore sNotify: DispatchSemaphore, onComplete completionHandler: @escaping (UInt) -> Void ) {
     let que = DispatchQueue.global(qos: .userInitiated)
     que.async {
-        print("Doing Async Work For \(workTimeInMsec) ms")
+        print("Doing Async Work For \(workTimeInMsec) ms on data \(dataToProcess) ")
         Thread.sleep(forTimeInterval:TimeInterval(workTimeInMsec/1000))
         print("Async Work Done")
+        completionHandler(dataToProcess+1)
         sNotify.signal()
     }
 }
     
-func  asyncFunction( message: String) {
+func  processData( data: UInt) {
     let sema  = DispatchSemaphore(value: 0)
-    simulatedAsyncWork(workTimeInMsec: 1000, withDispatchSemaphore: sema)
+    var processedData: UInt = 0
+    simulatedAsyncWork(workTimeInMsec: 1000, withData: data, dispatchSemaphore: sema, onComplete: { (value: UInt )-> Void in
+        processedData = value
+    })
     sema.wait()
-    print("Message From asyncFunction: \(message) ")
+    print("Data Value After Work \(processedData) ")
        
 }
 
-asyncFunction(message: "Hello World")
+processData(data: 3)
 

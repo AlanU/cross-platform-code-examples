@@ -15,16 +15,17 @@
 
 require 'concurrent-ruby'
 
-def simulatedAsyncWork(workTimeInMsec)
-  puts "Doing Async Work For #{workTimeInMsec} ms"
+def simulatedAsyncWork(workTimeInMsec, dataToProcess)
+  puts "Doing Async Work For #{workTimeInMsec} ms on data #{dataToProcess}"
   sleep(workTimeInMsec/1000)
-  puts "Async Work Done"
+  puts 'Async Work Done'
+  return dataToProcess+1
 end
 
-def asyncFunction(message)
-  future = Concurrent::Future.execute { simulatedAsyncWork(1000) }
-  future.wait
-  puts "Message From asyncFunction: #{message}"
+def processData(data)
+  future = Concurrent::Future.execute { simulatedAsyncWork(1000, data) }
+  processedData = future.value
+  puts "Data Value After Work #{processedData}"
 end
 
-asyncFunction('Hello World')
+processData(3)

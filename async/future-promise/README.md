@@ -11,18 +11,18 @@
 
 ![swift code](https://github.com/AlanU/cross-platform-code-examples/blob/main/async/future-promise/code%20pictures/swift.png)
 
-[Python])https://github.com/AlanU/cross-platform-code-examples/blob/main/async/future-promise/python/main.py)
+[Python](https://github.com/AlanU/cross-platform-code-examples/blob/main/async/future-promise/python/main.py)
 
-![swift code](https://github.com/AlanU/cross-platform-code-examples/blob/main/async/future-promise/code%20pictures/python.png)
+![python code](https://github.com/AlanU/cross-platform-code-examples/blob/main/async/future-promise/code%20pictures/python.png)
 
-![Ruby](https://github.com/AlanU/cross-platform-code-examples/blob/main/async/future-promise/ruby/index.rb)
+[Ruby](https://github.com/AlanU/cross-platform-code-examples/blob/main/async/future-promise/ruby/index.rb)
 
-![swift code](https://github.com/AlanU/cross-platform-code-examples/blob/main/async/future-promise/code%20pictures/ruby.png)
+![ruby code](https://github.com/AlanU/cross-platform-code-examples/blob/main/async/future-promise/code%20pictures/ruby.png)
 
 [C++](https://github.com/AlanU/cross-platform-code-examples/blob/main/async/future-promise/c%2B%2B/main.cpp)
 
-![swift code](https://github.com/AlanU/cross-platform-code-examples/blob/main/async/future-promise/code%20pictures/cpp.png)
+![c++ code](https://github.com/AlanU/cross-platform-code-examples/blob/main/async/future-promise/code%20pictures/cpp.png)
 
 [C#](https://github.com/AlanU/cross-platform-code-examples/blob/main/async/future-promise/c%23/c-sharp/Program.cs)
 
-![swift code](https://github.com/AlanU/cross-platform-code-examples/blob/main/async/future-promise/code%20pictures/c-sharp.png)
+![C# code](https://github.com/AlanU/cross-platform-code-examples/blob/main/async/future-promise/code%20pictures/c-sharp.png)

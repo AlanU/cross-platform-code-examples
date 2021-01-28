@@ -17,21 +17,22 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import Foundation
 
-func simulatedAsyncWork( workTimeInMsec: UInt ) {
-    print("Doing Async Work For \(workTimeInMsec) ms")
+func simulatedAsyncWork( workTimeInMsec: UInt, withData dataToProcess: UInt ) -> UInt {
+    print("Doing Async Work For \(workTimeInMsec) ms on data \(dataToProcess)")
     Thread.sleep(forTimeInterval:TimeInterval(workTimeInMsec/1000))
     print("Async Work Done")
+    return dataToProcess+1
 }
     
-func  asyncFunction( message: String) {
+func processData( data: UInt) {
     let queue = OperationQueue()
+    var processedData: UInt = 0
     queue.addOperation {
-        simulatedAsyncWork(workTimeInMsec: 1000)
+        processedData = simulatedAsyncWork(workTimeInMsec: 1000, withData: data)
     }
     queue.waitUntilAllOperationsAreFinished()
-    print("Message From asyncFunction: \(message) ")
-       
+    print("Data Value After Work \(processedData)")
 }
 
-asyncFunction(message: "Hello World")
+processData(data: 3)
 

@@ -16,3 +16,6 @@ async/future-promise/python/.idea/
 async/future-promise/python/venv/bin/
 async/future-promise/python/venv/lib/
 /async/future-promise/python/venv/pyvenv.cfg
+async/future-promise/c\#/c-sharp/.vs/
+async/future-promise/c\#/c-sharp/bin
+async/future-promise/c\#/c-sharp/obj/

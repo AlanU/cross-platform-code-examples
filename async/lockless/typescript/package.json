@@ -1,7 +1,7 @@
 {
-  "name": "future-promise-exmple",
+  "name": "lockless-exmple",
   "version": "1.0.0",
-  "description": "Example of using async and await ",
+  "description": "Example of using lockless aysnc",
   "main": "index.js",
   "scripts": {
     "lint": "eslint --ext .ts",

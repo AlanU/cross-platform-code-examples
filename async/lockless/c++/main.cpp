@@ -35,11 +35,12 @@ void waitForAllFutures(const std::vector<std::future<T>> & futuresToWaitFor)
     }
 }
 
-std::future<std::string> asyncTrim (std::string & dataToProcess) {
-    return std::async(std::launch::async,[dataToProcess]() mutable
+std::future<std::string> asyncTrim (const std::string & dataToProcess) {
+    return std::async(std::launch::async,[&dataToProcess]()
     {
-        dataToProcess.erase(std::remove_if(dataToProcess.begin(), dataToProcess.end(), [](unsigned char x){return std::isspace(x);}), dataToProcess.end());
-        return std::move(dataToProcess);
+        std::string stringToTrim = dataToProcess;
+        stringToTrim.erase(std::remove_if(stringToTrim.begin(), stringToTrim.end(), [](unsigned char x){return std::isspace(x);}), stringToTrim.end());
+        return std::move(stringToTrim);
     });
 }
 
@@ -47,7 +48,7 @@ void trimAllStrings ( std::vector<std::string> & stringsToTrim) {
     std::vector<std::future<std::string>> dataProcessors;
     dataProcessors.reserve(stringsToTrim.size());
 
-    for(std::string & stringToProcess : stringsToTrim)
+    for(const std::string & stringToProcess : stringsToTrim)
     {
         std::cout<<"Removing White SpaceFor "<<stringToProcess<<std::endl;
         dataProcessors.push_back(asyncTrim(stringToProcess));

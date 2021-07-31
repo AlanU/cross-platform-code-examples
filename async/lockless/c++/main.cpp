@@ -35,7 +35,6 @@ void waitForAllFutures(const std::vector<std::future<T>> & futuresToWaitFor)
     }
 }
 
-using namespace std::chrono_literals;
 std::future<std::string> asyncTrim (const std::string & dataToProcess) {
     return std::async(std::launch::async,[dataToProcess]()
     {

@@ -16,8 +16,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
 #include <iostream>
-#include <chrono>
-#include <thread>
 #include <future>
 #include <vector>
 #include <string>
@@ -27,35 +25,23 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  * @brief Utility function to wait for all futures in a vector to complete (are in the ready state).
  * Function returns when all futures are in the ready state
  * @param Vector of futures to wait on
- * @param std::chrono time to sleep between checks
+ * Note this method assumes the futures are all valid
  */
 template<class T>
-void waitForAllFutures(const std::vector<std::future<T>> & futuresToWaitFor,
-                       unsigned int milliseconds_between_checks = 1000 )
+void waitForAllFutures(const std::vector<std::future<T>> & futuresToWaitFor)
 {
-    bool allFuturesAreNotDone = false;
-    do{
-        allFuturesAreNotDone = false;
-        for(const std::future<std::string> & futureToCheck : futuresToWaitFor){
-            std::future_status status = futureToCheck.wait_for(std::chrono::milliseconds(0));
-            if(status != std::future_status::ready)
-            {
-                allFuturesAreNotDone = true;
-                break;
-            }
-        }
-        if(allFuturesAreNotDone){
-            std::this_thread::sleep_for(std::chrono::milliseconds(milliseconds_between_checks));
-        }
-    } while(allFuturesAreNotDone);
+    for(const std::future<std::string> & futureToCheck : futuresToWaitFor){
+        futureToCheck.wait();
+    }
 }
 
 using namespace std::chrono_literals;
-std::future<std::string> asyncTrim (std::string & dataToProcess) {
-    return std::async(std::launch::async,[dataToProcess]() mutable
+std::future<std::string> asyncTrim (const std::string & dataToProcess) {
+    return std::async(std::launch::async,[dataToProcess]()
     {
-        dataToProcess.erase(std::remove_if(dataToProcess.begin(), dataToProcess.end(), [](unsigned char x){return std::isspace(x);}), dataToProcess.end());
-        return dataToProcess;
+        std::string stringToTrim = dataToProcess;
+        stringToTrim.erase(std::remove_if(stringToTrim.begin(), stringToTrim.end(), [](unsigned char x){return std::isspace(x);}), stringToTrim.end());
+        return std::move(stringToTrim);
     });
 }
 
@@ -63,7 +49,7 @@ void trimAllStrings ( std::vector<std::string> & stringsToTrim) {
     std::vector<std::future<std::string>> dataProcessors;
     dataProcessors.reserve(stringsToTrim.size());
 
-    for( std::string & stringToProcess : stringsToTrim)
+    for(const std::string & stringToProcess : stringsToTrim)
     {
         std::cout<<"Removing White SpaceFor "<<stringToProcess<<std::endl;
         dataProcessors.push_back(asyncTrim(stringToProcess));

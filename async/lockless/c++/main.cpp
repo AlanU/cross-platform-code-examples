@@ -30,7 +30,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 template<class T>
 void waitForAllFutures(const std::vector<std::future<T>> & futuresToWaitFor)
 {
-    for(const std::future<std::string> & futureToCheck : futuresToWaitFor){
+    for(const auto & futureToCheck : futuresToWaitFor){
         futureToCheck.wait();
     }
 }

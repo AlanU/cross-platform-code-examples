@@ -36,9 +36,8 @@ void waitForAllFutures(const std::vector<std::future<T>> & futuresToWaitFor)
 }
 
 std::future<std::string> asyncTrim (const std::string & dataToProcess) {
-    return std::async(std::launch::async,[&dataToProcess]()
+    return std::async(std::launch::async,[stringToTrim = dataToProcess]() mutable
     {
-        std::string stringToTrim = dataToProcess;
         stringToTrim.erase(std::remove_if(stringToTrim.begin(), stringToTrim.end(), [](unsigned char x){return std::isspace(x);}), stringToTrim.end());
         return std::move(stringToTrim);
     });
